@@ -4,9 +4,11 @@ on:
   push:
     branches:
       - main  # Replace with the branch you want to monitor
-
 jobs:
   build:
+    permissions:
+      contents: write  # Allow write access to the repository
+
     runs-on: ubuntu-latest
 
     steps:
@@ -21,7 +23,7 @@ jobs:
         mkdir -p output
         pdflatex -interaction=nonstopmode -halt-on-error -output-directory=output main.tex
 
-    - name: Deploy PDF to GitHub Pages
+    - name: Deploy to GitHub Pages
       run: |
         mkdir -p gh-pages
         mv output/main.pdf gh-pages/
