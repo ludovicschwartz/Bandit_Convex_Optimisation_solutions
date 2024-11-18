@@ -7,5 +7,11 @@
 
 \end{exercise}
 
-\begin{solution}[TODO]
+\begin{solution}[]
+	Since $f \in \mathcal{F}_{sm,sc}$, it holds that $g:x \mapsto f(x) - \frac{\alpha}{2}||x||^2$ is convex and $h:x \mapsto f(x)- \frac{\beta}{2}||x||^2$ is concave.
+	Further more $f$ is twice differentiable which implies that $g$ and $h$ are also twice differentiable and it follows that:
+	\begin{equation*}
+		g''(x) \succeq 0\text{ and }  h''(x) \preceq 0  \text{ for all $ x\in int(K). $}
+	\end{equation*}
+	Remarking that $g''(x) = f''(x) - \alpha\mathbf{1}$ and $h''(x) = f''(x) - \beta \mathbf{1}$ yields the statement.
 \end{solution}
