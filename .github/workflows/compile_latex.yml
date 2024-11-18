@@ -26,16 +26,16 @@ jobs:
       with:
         name: compiled-pdf
 
-     - name: Deploy PDF to GitHub Pages
-       run: |
-         mkdir -p gh-pages
-         mv output/main.pdf gh-pages/
-         cd gh-pages
-         git init
-         git config user.name "github-actions[bot]"
-         git config user.email "github-actions[bot]@users.noreply.github.com"
-         git add .
-         git commit -m "Deploy PDF"
-         git branch -M main
-         git remote add origin https://github.com/ludovicschwartz/Bandit_Convex_Optimisation_solutions.git
-         git push --force origin main:gh-pages       path: output/main.pdf
+    - name: Deploy PDF to GitHub Pages
+      run: |
+        mkdir -p gh-pages
+        mv output/main.pdf gh-pages/
+        cd gh-pages
+        git init
+        git config user.name "github-actions[bot]"
+        git config user.email "github-actions[bot]@users.noreply.github.com"
+        git add .
+        git commit -m "Deploy PDF"
+        git branch -M main
+        git remote add origin https://github.com/ludovicschwartz/Bandit_Convex_Optimisation_solutions.git
+        git push --force origin main:gh-pages       path: output/main.pdf
