@@ -33,4 +33,4 @@ jobs:
         git commit -m "Deploy PDF"
         git branch -M main
         git remote add origin https://github.com/ludovicschwartz/Bandit_Convex_Optimisation_solutions.git
-        git push --force origin main:gh-pages       path: output/main.pdf
+        git push --force origin main:gh-pages
