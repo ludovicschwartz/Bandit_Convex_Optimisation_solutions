@@ -14,12 +14,12 @@ jobs:
       uses: actions/checkout@v3
 
     - name: Set up LaTeX environment
-      run: sudo apt-get update && sudo apt-get install -y texlive-full
+      run: sudo apt-get update && sudo apt-get install -y texlive-latex-recommended
 
     - name: Compile LaTeX file
       run: |
+        mkdir -p output
         pdflatex -interaction=nonstopmode -halt-on-error -output-directory=output main.tex
-      working-directory: ./
 
     - name: Upload compiled PDF
       uses: actions/upload-artifact@v3
