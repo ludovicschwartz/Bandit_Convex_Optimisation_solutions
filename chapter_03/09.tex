@@ -1,6 +1,64 @@
 %! TEX root = ./main.tex
-\begin{exercise}[TODO]{}
+\begin{exercise}[]{}
+	Suppose that A is convex and f has directional derivatives and $ Df(x)[\eta] \leq L $ for all $ x \in A $ and $
+	\eta \in \mathbb{S}^{d-1}_1$. Show that $ \text{lip}_A(f) \leq L. $
 \end{exercise}
 
-\begin{solution}[TODO]
+\begin{solution}[]
+	We remark that if A is open and f is differentiable on A, the result is a direct consequence of the mean value theorem. Indeed, let
+	$ x\neq y \in A$ and define 
+\begin{align*}
+g :[0,1]& \longrightarrow \real \\
+t&\longmapsto f((1-t)x + ty) .
+\end{align*}
+g is then differentiable on [0,1] and by the mean value theorem, we can find a real number $ c\in ]0,1[ $ such that $ g(1) - g(0) =
+g'(c)$. Moreover, by the chain rule we have 
+\begin{align*}
+	g'(c) &= \nabla f ((1-c) x + cy) \cdot (y-x)  \\
+	      &= Df((1-c)x + cy)[x-y] \\
+	      &= \norm{x-y} Df((1-c)x + c y) \left[\frac{x-y}{\norm{x-y}}\right]\\
+	      &\leq \norm{x-y}L.
+\end{align*}
+where we use the fact that $ \frac{x-y}{\norm{x-y}} \in \mathbb{S}_1^{d-1} $.
+Then we have 
+\begin{equation*}
+	f(y) - f(x) = g(1)-g(0) = g'(c) \leq \norm{x-y}L.
+\end{equation*}
+By symmetry of x and y, we have proven $ |f(x) - f(y)| \leq L \norm{x-y} $.
+
+We now look at the case where we don't assume that f is differentiable but just has directional derivatives. As
+before, we will show that $ g(1) - g(0) \leq  \norm{x-y} L $. We let $ M = \norm{x-y}L $, $ \epsilon>0 $ and $ h(x) =
+g(x) - (M + \epsilon)x $. We will show that h is decreasing. The hypothesis that f has directional derivatives
+translates into g having left and right derivatives. Moreover for any $ t\in [0,1[ $ 
+\begin{equation*}
+	g^{\prime +}(t) = \lim_{h \rightarrow 0^{+}} \frac{g(t+h)- g(t)}{h} = \norm{x-y} Df((1-t)x +
+	ty)\left[\frac{y-x}{\norm{y-x}}\right] \leq  \norm{x-y}L =M .
+\end{equation*}
+As a consequence of this $ h^{\prime+}(x) = g^{\prime+}(x) - (M+\epsilon) \leq -\epsilon < 0 $. We will now show that h
+is decreasing on $ [0,1] $ by contradiction.
+
+Assume that there are $0 \leq  u < v < 1 $ such that $ h(u) < h(v)$. We let
+$w = inf(\{ z \in[u,1], h(u) < h(z) \})  $. Since $ h^{\prime+}(u) < 0 $, there is an $ \alpha >0 $ such that for any $
+	z\in[u,u+ \alpha], h(z) \leq h(u) $.
+This proves that $ w > u $. Also, because h is continuous(Because it has left and right derivatives), we must have
+$ h(w)=h(u) $.
+
+Now since $ g^{\prime+}(w) <0 $, there is once again an $ \alpha >0 $ such that for any $ z\in[w, w +
+\alpha], h(z) \leq h(w) $. Now by the definition of w, we can find an element $ z \in ]w, w + \alpha [$ such that $ h(z)
+< h(u) = h(w)$, this is a contradiction.
+
+Finally we have proven that h is decreasing on [0,1[(and on [0,1] by continuity). This means that
+\begin{equation*}
+	0 \leq h(0) - h(1) = g(0) - g(1) + (M+ \epsilon).
+\end{equation*}
+Rearranging we get 
+\begin{equation*}
+	f(y) -f(x) \leq M+ \epsilon.
+\end{equation*}
+Since $ \epsilon $ was arbitrary, this means that $ f(y) - f(x) \leq M $ and finally by symmetry
+\begin{equation*}
+	|f(y)-f(x)| \leq M = L \norm{x-y}.
+\end{equation*}
+
+
 \end{solution}
