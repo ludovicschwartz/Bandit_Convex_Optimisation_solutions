@@ -2,14 +2,36 @@
 \begin{exercise}[]{}
 Prove the following statements:
 
-(a) Given convex bodies $K\subset J$, polarity reverses inclusion:$J \subset K$.
+(a) Given convex bodies $K\subset J$, polarity reverses inclusion: $J^\circ \subset K^\circ$.
 
-(b) The polar body of a non-empty ball $K = \mathbb{B}_r^d$ is $K = \BB_{1/r}^d.$
+(b) The polar body of a non-empty ball $K = \mathbb{B}_r^d$ is $K^\circ = \BB_{1/r}^d.$
 
 (c) For symmetric convex body $K$, $||\cdot||_K := \pi_K(\cdot)$ is a norm.
 
-(d) For symmetric convex body $K$, the dual of $||\cdot||_K$ is $||\cdot||_{K}$:
+(d) For symmetric convex body $K$, the dual of $||\cdot||_K$ is $||\cdot||_{K^\circ}$ where:
 \[ ||u||_{K} =\max\{\siprod{u}{x}: ||x||_{K}\leq 1, x \in \real^d\}.\]
 \end{exercise}
-\begin{solution}[TODO]
+\begin{solution}[]
+(a) For sake of concreteness we recall that $K^\circ = \{ u \in \real^d:h_K(u) \leq 1\}$ where $h_K(u) =  \sup_{x \in K}\siprod{u}{x}.$ 
+Now remark that $K \subset J$ implies that $h_K(u) \leq h_J(u)$ for all $u \in \real^d$, in particular let $u \in J^\circ$ then the following holds:
+\[h_K(u) \leq h_J(u) \leq 1\]
+thus $u \in J^\circ$ which concludes.
+
+(b) We will show the statement by double inclusion. If $u \in K=\BB_{r}^d$ then by Cauchy-Scwharz $\siprod{u}{x} \leq ||u||||x||$ for all $x \in K$ so in particular
+$h_{K}(u) \leq ||u||||x|| \leq r \times 1/r = 1$ and therefore $u \in K^{\circ}.$ 
+Conversely let $u \in K^\circ$ and assume $u \neq 0$ (we can discard the case $u =0$ because the stament is trivial in that case)
+then $  \siprod{u}{x} \leq 1$ for all $x \in \BB_r^d$
+ in particular it holds for $x^0 = r \frac{u}{||u||}$.
+therefore $\siprod{u}{x^0} = r ||u|| \leq 1$ which implies that $||u|| \leq 1/r$ thus $K^\circ = \BB_{1/r}^d$ which concludes.
+
+(c) We assume $K$ is symmetric, \textit{i.e} $K = -K$, and recall that $\pi_K(x) = \inf \{t>0: x \in tK \}.$
+
+\textbf{Positive definiteness:} Suppose $\pi_K(x)=0$ and $x \neq 0$ then because $K$ is a convex body there exist $\epsilon >0$ such that $\BB_\epsilon^d \subset K$ and therefore since $x \in \BB_{||x||}^d$ setting
+$t =\frac{||x||}{\epsilon}$ ensures that $x \in tK$ which contradicts that $\pi_K(x) =0$. So necessarily $x =0$.
+
+\textbf{Homogenity:} By definition $\pi_K(\lambda x) = \inf \{t>0: \lambda x \in tK \} = |\lambda| \inf \{t>0: x \in tK \}=|\lambda| \pi_K(x).$
+In the second inequality we used the fact that if $\lambda x \in K$, $-\lambda x \in K$.
+
+\textbf{Triangle Inequality:} $\pi_K(x+y) = \inf \{t>0: x+y \in tK \} \leq  \inf\{t>0: x \in tK \} + \inf \{t>0:  y \in tK \}=\pi_K(x)+\pi_K(y).$
+
 \end{solution}
